@@ -1,0 +1,13 @@
+{
+    "apps": [
+        {
+            "name": "bbi",
+            "cwd": "/usr/share/nginx/bbi.brndn.me",
+            "script": "app.js",
+            "args": "",
+            "watch": true,
+            "error_file": "/usr/share/nginx/bbi-err.log",
+            "out_file": "/usr/share/nginx/bbi-out.log"
+        }
+    ]
+}

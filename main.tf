@@ -17,8 +17,10 @@ data "template_file" "userdata_web" {
     userdata_sshkey                   = "${var.do_ssh_key}"
     userdata_nginx_dirtroadcollection = "${base64encode(file("${path.module}/files/dirtroadcollection.com"))}"
     userdata_index                    = "${base64encode(file("${path.module}/files/index.html"))}"
-    userdata_nginx_brndn              = "${base64encode(file("${path.module}/files/brndn.com"))}"
-    userdata_nginx_bbi_brndn          = "${base64encode(file("${path.module}/files/bbi.brndn.com"))}"
+    userdata_nginx_brndn              = "${base64encode(file("${path.module}/files/brndn.me"))}"
+    userdata_nginx_bbi_brndn          = "${base64encode(file("${path.module}/files/bbi.brndn.me"))}"
+    userdata_pm2_json                 = "${base64encode(file("${path.module}/files/sites.json"))}"
+    userdata_localjs_bbi              = "${base64encode(file("${path.module}/files/bbi.local.js"))}"
   }
 }
 
@@ -90,7 +92,7 @@ resource "digitalocean_record" "CNAME-www" {
 }
 
 resource "digitalocean_domain" "brndn" {
-  name       = "brndn.com"
+  name       = "brndn.me"
   ip_address = "${digitalocean_droplet.web.ipv4_address}"
 }
 
