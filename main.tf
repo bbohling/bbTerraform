@@ -18,6 +18,7 @@ data "template_file" "userdata_web" {
     userdata_nginx_dirtroadcollection = "${base64encode(file("${path.module}/files/dirtroadcollection.com"))}"
     userdata_index                    = "${base64encode(file("${path.module}/files/index.html"))}"
     userdata_nginx_brndn              = "${base64encode(file("${path.module}/files/brndn.me"))}"
+    userdata_index_brndn              = "${base64encode(file("${path.module}/files/brndn.index.html"))}"
     userdata_nginx_bbi_brndn          = "${base64encode(file("${path.module}/files/bbi.brndn.me"))}"
     userdata_pm2_json                 = "${base64encode(file("${path.module}/files/sites.json"))}"
     userdata_localjs_bbi              = "${base64encode(file("${path.module}/files/bbi.local.js"))}"
@@ -35,6 +36,15 @@ data "template_file" "install_mariadb_database" {
   }
 }
 
+# data "template_file" "lets_encrypt" {
+#   template = "${file("${path.module}/templates/lets_encrypt.yml.tpl")}"
+
+#   vars {
+#     token  = "${var.do_token}"
+#     domain = "brndn.me"
+#   }
+# }
+
 # Render a multi-part cloud-config
 data "template_cloudinit_config" "bbterraform_config" {
   base64_encode = false
@@ -45,6 +55,12 @@ data "template_cloudinit_config" "bbterraform_config" {
     content      = "${data.template_file.install_mariadb_database.rendered}"
     merge_type   = "list(append)+dict(recurse_array)+str()"
   }
+
+  #   part {
+  #     content_type = "text/cloud-config"
+  #     content      = "${data.template_file.lets_encrypt.rendered}"
+  #     merge_type   = "list(append)+dict(recurse_array)+str()"
+  #   }
 
   part {
     content_type = "text/cloud-config"

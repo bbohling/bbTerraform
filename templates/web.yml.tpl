@@ -23,6 +23,9 @@ write_files:
     content: ${userdata_nginx_brndn}
     path: /tmp/brndn.me
   - encoding: b64
+    content: ${userdata_index_brndn}
+    path: /tmp/brndn.index.html
+  - encoding: b64
     content: ${userdata_nginx_bbi_brndn}
     path: /tmp/bbi.brndn.me
   - encoding: b64
@@ -48,10 +51,10 @@ runcmd:
   - mv /tmp/brndn.me /etc/nginx/sites-available/brndn.me
   - ln -s /etc/nginx/sites-available/brndn.me /etc/nginx/sites-enabled
   - mkdir /usr/share/nginx/brndn.me
+  - mv /tmp/brndn.index.html /usr/share/nginx/brndn.me/index.html
   - mv /tmp/bbi.brndn.me /etc/nginx/sites-available/bbi.brndn.me
   - ln -s /etc/nginx/sites-available/bbi.brndn.me /etc/nginx/sites-enabled
   - mkdir /usr/share/nginx/bbi.brndn.me
-
   - cd /usr/share/nginx
   - git clone https://github.com/bbohling/lifestream-api.git bbi.brndn.me
   - cd /usr/share/nginx/bbi.brndn.me
@@ -62,7 +65,6 @@ runcmd:
   - service nginx reload
   - npm install -g pm2
   - mv /tmp/sites.json /usr/share/nginx/sites.json
-  - sleep 5
   - pm2 start /usr/share/nginx/sites.json
   - curl -sSL https://agent.digitalocean.com/install.sh | sh
 final_message: "The system is finally up, after $UPTIME seconds"
