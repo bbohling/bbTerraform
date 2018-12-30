@@ -13,3 +13,8 @@ A secrets file, `terraform.tfvars` is required to leverage this infrastructure a
 * do_sshe_key
 * db_admin_pass
 * db_pass
+
+## TODO
+
+- [ ] add some git repos for websites and APIs
+- [ ] migrate all other domains
