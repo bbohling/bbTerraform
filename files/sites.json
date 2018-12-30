@@ -5,9 +5,12 @@
             "cwd": "/usr/share/nginx/bbi.brndn.me",
             "script": "app.js",
             "args": "",
-            "watch": true,
+            "watch": false,
             "error_file": "/usr/share/nginx/bbi-err.log",
-            "out_file": "/usr/share/nginx/bbi-out.log"
+            "out_file": "/usr/share/nginx/bbi-out.log",
+            "env": {
+                "NODE_ENV": "production"
+            }
         }
     ]
 }
