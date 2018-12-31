@@ -14,6 +14,27 @@ A secrets file, `terraform.tfvars` is required to leverage this infrastructure a
 * db_admin_pass
 * db_pass
 
+## Post Install Steps
+
+* # bbTerraform
+
+## Post Install
+
+* [Basic Firewall](https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands)
+```
+sudo ufw allow OpenSSH
+sudo ufw allow 'Nginx Full'
+sudo ufw delete allow 'Nginx HTTP'
+sudo ufw allow ssh
+ufw enable
+```
+* [Install SSL](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-18-04)
+```
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt install python-certbot-nginx
+sudo certbot --nginx -d bbi.brndn.me -d brndn.me
+```
+
 ## TODO
 
 - [ ] add some git repos for websites and APIs
