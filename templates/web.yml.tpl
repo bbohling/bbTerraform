@@ -66,12 +66,12 @@ runcmd:
   - service nginx reload
   - npm install -g pm2
   - mv /tmp/sites.json /usr/share/nginx/sites.json
-  - curl -sSL https://agent.digitalocean.com/install.sh | sh
   - pm2 startup ubuntu
   - pm2 start /usr/share/nginx/sites.json
   - pm2 save
   - curl http://localhost:1337/v1/ingest/brandon?getAll=true
   - curl http://localhost:1337/v1/ingest/dave?getAll=true
+  - curl -sSL https://agent.digitalocean.com/install.sh | sh
   - sudo reboot
 
 final_message: "The system is finally up, after $UPTIME seconds"
