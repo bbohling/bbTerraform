@@ -95,17 +95,17 @@ resource "digitalocean_droplet" "web" {
 # Domains
 #
 
-# resource "digitalocean_domain" "default" {
-#   name       = "dirtroadcollection.com"
-#   ip_address = "${digitalocean_droplet.web.ipv4_address}"
-# }
+resource "digitalocean_domain" "default" {
+  name       = "dirtroadcollection.com"
+  ip_address = "${digitalocean_droplet.web.ipv4_address}"
+}
 
-# resource "digitalocean_record" "CNAME-www" {
-#   domain = "${digitalocean_domain.default.name}"
-#   type   = "CNAME"
-#   name   = "www"
-#   value  = "@"
-# }
+resource "digitalocean_record" "CNAME-www" {
+  domain = "${digitalocean_domain.default.name}"
+  type   = "CNAME"
+  name   = "www"
+  value  = "@"
+}
 
 resource "digitalocean_domain" "brndn" {
   name       = "brndn.me"
