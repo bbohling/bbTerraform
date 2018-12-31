@@ -10,7 +10,7 @@ A secrets file, `terraform.tfvars` is required to leverage this infrastructure a
 
 * do_token
 * do_ssh_fingerprint
-* do_sshe_key
+* do_ssh_key
 * db_admin_pass
 * db_pass
 
