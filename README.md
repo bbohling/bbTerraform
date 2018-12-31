@@ -28,10 +28,12 @@ ufw enable
 ```
 sudo add-apt-repository ppa:certbot/certbot
 sudo apt install python-certbot-nginx
-sudo certbot --nginx -d bbi.brndn.me -d brndn.me
+sudo certbot --nginx -d DOMAIN_1 -d SUBDOMAIN_1 // repeat -d
 ```
 
 ## TODO
 
-- [ ] add some git repos for websites and APIs
 - [ ] migrate all other domains
+- [ ] migrate all other websites
+- [ ] cloud-config seems to stop before running `pm2 startup ubuntu`
+
