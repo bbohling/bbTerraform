@@ -16,10 +16,6 @@ A secrets file, `terraform.tfvars` is required to leverage this infrastructure a
 
 ## Post Install Steps
 
-* # bbTerraform
-
-## Post Install
-
 * [Basic Firewall](https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands)
 ```
 sudo ufw allow OpenSSH
